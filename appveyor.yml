@@ -13,9 +13,10 @@ after_build:
 - ps: >-
     nuget pack `
       .\WebApi.Hal\WebApi.Hal.csproj `
+      -build `
       -version $env:APPVEYOR_BUILD_VERSION `
       -outputdirectory .\artifacts `
-      -properties "configuration=Release;id=HoneyBear.WebApi.Hal;title=HoneyBear.WebApi.Hal;author=Jake Ginnivan;description=Enabled Hypermedia support in Asp.net Web API using the HAL mediatype"
+      -properties "configuration=$env:CONFIGURATION;id=HoneyBear.WebApi.Hal;title=HoneyBear.WebApi.Hal;author=Jake Ginnivan;description=Enabled Hypermedia support in Asp.net Web API using the HAL mediatype"
 artifacts:
 - path: .\artifacts\*.nupkg
 deploy: off
